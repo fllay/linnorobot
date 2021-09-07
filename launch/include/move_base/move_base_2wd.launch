@@ -1,0 +1,14 @@
+<launch>
+
+  <node name="move_base_flex" pkg="mbf_costmap_nav" type="mbf_costmap_nav" required="true" output="screen">
+        <rosparam file="$(find linorobot)/param/navigation/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find linorobot)/param/navigation/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find linorobot)/param/navigation/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find linorobot)/param/navigation/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find linorobot)/param/navigation/base_local_planner_default_params.yaml" command="load" />
+        <rosparam file="$(find linorobot)/param/navigation/move_base_mbf.yaml" command="load" />
+        <rosparam file="$(find linorobot)/param/navigation/teb_local_planner_params.yaml" command="load" />
+  </node>
+
+  <node name="move_base_legacy_relay" pkg="agv_interface" type="mbf_relay.py"/>
+</launch>
